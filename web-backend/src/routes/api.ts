@@ -5,13 +5,13 @@ import { ticketController } from '../controllers/ticketController.js';
 import { orderController } from '../controllers/orderController.js';
 import { artistController } from '../controllers/artistController.js';
 import { adminController } from '../controllers/adminController.js';
-import { authMiddleware, optionalAuthMiddleware, adminOnlyMiddleware } from '../middleware/auth.js';
+import { authMiddleware, adminOnlyMiddleware } from '../middleware/auth.js';
 
 const router = Router();
 
 // --- Health Check ---
 router.get('/health', (req, res) => {
-  res.json({ status: 'healthy', timestamp: new Date().toISOString(), service: 'Aurora Pulse API' });
+  res.json({ status: 'healthy', timestamp: new Date().toISOString(), service: 'Gelar Tikar API' });
 });
 
 // --- Auth Routes ---
@@ -33,9 +33,10 @@ router.patch('/tickets/:id', adminOnlyMiddleware, ticketController.update);
 router.delete('/tickets/:id', adminOnlyMiddleware, ticketController.delete);
 
 // --- Order Routes ---
-router.post('/orders', optionalAuthMiddleware, orderController.create);
-router.get('/orders', optionalAuthMiddleware, orderController.getMyOrders);
-router.get('/orders/:code', orderController.getByCode);
+// Pesan tiket wajib login supaya pesanan tercatat di akun pembeli.
+router.post('/orders', authMiddleware, orderController.create);
+router.get('/orders', authMiddleware, orderController.getMyOrders);
+router.get('/orders/:code', authMiddleware, orderController.getByCode);
 
 // --- Artist Routes ---
 router.get('/artists', artistController.getAll);

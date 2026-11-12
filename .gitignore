@@ -23,3 +23,8 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Berkas kerja desain (screenshot, ronde pilihan)
+.impeccable/review/
+.impeccable/questions/
+.impeccable/decision/

@@ -1,64 +1,67 @@
-# 🎟️ AURORA PULSE: SISTEM MANAJEMEN & TIKET KONSER FULL-STACK
+# Gelar Tikar · Web Tiket Festival
 
-Sistem aplikasi tiket konser dan festival musik modern dengan arsitektur **Clean Modular**:
-- 📁 **`web-backend/`** : REST API Server (Express.js, TypeScript, MySQL2 / Dual Storage Engine, Bcrypt Password Hashing, JWT Auth, Seeder).
-- 📁 **`web-frontend/`** : Unified Web Application (React + Vite + Tailwind CSS + Phosphor Icons + Canvas Confetti + QR Code) yang menyatukan seluruh peran (**Pengunjung / Guest**, **Pengguna Terdaftar**, dan **Administrator**) ke dalam **1 Web Terpadu**.
+Web pemesanan tiket untuk festival band dan indie lokal **Gelar Tikar 2027** (acara fiktif, dibuat untuk tugas sekolah).
+Satu web dipakai tiga peran: **tamu**, **pembeli** (akun terdaftar), dan **panitia** (admin).
 
----
+- `web-backend/` · REST API: Express + TypeScript, MySQL (mysql2), password bcrypt, login JWT.
+- `web-frontend/` · Tampilan: React + Vite + Tailwind CSS.
 
-## 🚀 Panduan Menjalankan Manual di Terminal
+## Menjalankan
 
-### 1️⃣ Menjalankan Backend API (Terminal 1)
-```bash
-cd web-backend
-npm run dev
-```
-> Server API berjalan di: **`http://localhost:5000`** (Endpoint API: **`http://localhost:5000/api`**)
+1. (Opsional) Nyalakan MySQL (mis. Laragon), lalu impor `web-backend/database/schema.sql`.
+   Bila MySQL tidak menyala, backend otomatis memakai data contoh di memori (data kembali ke awal saat server dimatikan).
+2. Backend (terminal 1):
+   ```bash
+   cd web-backend
+   npm run dev
+   ```
+   API: `http://localhost:5000/api`
+3. Frontend (terminal 2):
+   ```bash
+   cd web-frontend
+   npm run dev
+   ```
+   Web: `http://localhost:5173`
 
-### 2️⃣ Menjalankan Frontend Web (Terminal 2)
-```bash
-cd web-frontend
-npm run dev
-```
-> Website antarmuka berjalan di: **`http://localhost:5173`**
+Pengaturan database ada di `web-backend/.env` (lihat `.env.example`).
 
----
+## Akun demo
 
-## 🔑 Kredensial Akun Bawaan (Default Database)
+| Peran   | Email                 | Password      |
+| ------- | --------------------- | ------------- |
+| Panitia | `admin@gelartikar.id` | `Admin12345!` |
+| Pembeli | `raditya@example.com` | `User12345!`  |
 
-| Role / Peran | Alamat Email | Password Asli | Akses Fitur |
-| :--- | :--- | :--- | :--- |
-| **Administrator** | `admin@aurorapulse.com` | `AdminAurora2026!` | Panel Kontrol Admin (Event, Tiket, Verifikasi Order, Artis, Revenue) |
-| **Pengguna Demo** | `customer@gmail.com` | `User12345!` | Pemesanan Tiket, Checkout QRIS/VA, Akses Tiket Saya & QR E-Ticket |
+Di halaman Masuk ada tombol "Isi akun pembeli" dan "Isi akun panitia".
 
----
+## Alur
 
-## ✨ Fitur & Alur Penggunaan Satu Web (All-in-One Role)
+**Pembeli**
 
-### 👤 1. Alur Pengunjung & Pendaftaran User Baru
-1. Buka website di browser (`http://localhost:5173`).
-2. Klik tombol **"Masuk / Daftar"** di pojok kanan atas navbar.
-3. Pilih tab **"Daftar Akun Baru"**:
-   - Masukkan **Nama Lengkap**, **Email**, **No WhatsApp**, dan **Password**.
-   - Klik **"Daftar & Masuk Otomatis"**.
-   - Data otomatis tersimpan ke **Database** dengan enkripsi Bcrypt dan user langsung ter-autentikasi.
-4. Pilih tiket konser di bagian **"Kategori Tiket"** -> Klik **"Pesan Tiket"**.
-5. Form checkout otomatis terisi data diri user -> Pilih metode pembayaran (QRIS / Virtual Account) -> Klik **"Bayar Sekarang"**.
-6. E-Ticket QR Code resmi diterbitkan dan otomatis tersimpan di menu **"Tiket Saya"**.
+1. Buka beranda: papan acara berisi tanggal, tempat, jadwal per hari, dan harga mulai.
+2. Pilih kategori tiket dan jumlah (maksimal 4 per pesanan), lalu klik **Pesan**.
+   Bila belum masuk, pembeli diarahkan ke halaman Masuk/Daftar lalu kembali ke formulir pesanan.
+3. Isi data pemegang tiket, pilih **QRIS** atau **Virtual Account**, centang persetujuan, lalu **Buat pesanan**.
+   Kuota langsung disimpan untuk pesanan itu (stok berkurang) supaya tidak terjual melebihi kuota.
+4. Halaman pesanan menampilkan instruksi bayar (simulasi) dan status **Menunggu verifikasi**. Status dicek ulang otomatis tiap 10 detik.
+5. Setelah panitia menyetujui, status menjadi **Lunas** dan e-tiket dengan kode QR muncul di halaman pesanan dan di **Tiket saya**.
 
-### 🛡️ 2. Alur Administrator (Tanpa Pindah Website)
-1. Buka modal yang sama melalui tombol **"Masuk / Daftar"** -> Masukkan email `admin@aurorapulse.com` dan password `AdminAurora2026!`.
-2. Sistem otomatis mengenali role **`admin`**.
-3. Di Navbar akan langsung muncul badge **"🛡️ Administrator"** dan tombol **"🎛️ Panel Admin"**.
-4. Klik tombol **"🎛️ Panel Admin"** untuk membuka pusat kendali:
-   - **📊 Ringkasan & Metrik**: Total pendapatan, total tiket terjual, dan status transaksi.
-   - **💳 Pesanan & Verifikasi**: Cek pesanan pembeli baru dan lakukan verifikasi pembayaran (Approve / Reject) dengan 1 klik.
-   - **🎟️ Kelola Tiket**: Tambah kategori tiket baru, ubah harga, dan tambah kuota.
-   - **🎪 Kelola Event**: Buka atau tutup penjualan tiket event secara langsung.
-   - **🎤 Lineup Artis**: Tambah bintang tamu pengisi acara.
-5. Admin dapat kembali menikmati tampilan festival kapan saja dengan 1 klik tanpa harus logout.
+**Panitia** (menu *Panel panitia*)
 
----
+- **Pesanan**: periksa pembayaran yang menunggu, lalu **Setujui** (e-tiket aktif) atau **Tolak** (kuota dikembalikan). Pesanan yang sudah diproses tidak bisa diproses dua kali.
+- **Ringkasan**: pendapatan terverifikasi, jumlah pesanan per status, dan sisa kuota per acara.
+- **Kategori tiket**: ubah harga, kuota, dan status jual; tambah kategori. Kategori yang sudah pernah dipesan tidak bisa dihapus (tutup penjualannya saja).
+- **Acara**: buka/tutup penjualan; tambah acara di kota baru (dibuat dalam keadaan ditutup sampai kategori tiketnya siap).
+- **Band**: tambah dan hapus penampil.
 
-## 🗄️ Skema Basis Data MySQL
-Skema database lengkap dan query relasi tabel tersedia di [`web-backend/database/schema.sql`](web-backend/database/schema.sql).
+**Aturan yang dijaga backend**
+
+- Memesan wajib login; pembeli hanya bisa melihat pesanannya sendiri.
+- Jumlah tiket 1–4 per pesanan; tidak bisa memesan bila acara ditutup, kategori tidak dijual, atau kuota kurang.
+- Biaya layanan Rp10.000 per pesanan.
+- Saat memakai MySQL, pembuatan pesanan dan verifikasi berjalan dalam transaksi dengan penguncian baris kategori (`SELECT ... FOR UPDATE`), jadi dua pembeli tidak bisa mengambil sisa kuota yang sama.
+
+## Struktur database
+
+Lihat `web-backend/database/schema.sql`: `users`, `artists`, `events`, `event_artists` (jadwal), `ticket_tiers`, `orders`, `order_items`, `payments`.
+Status pesanan: `pending` → `paid` atau `rejected`.

@@ -42,7 +42,7 @@ export const authController = {
 
       res.status(201).json({
         success: true,
-        message: 'Registrasi berhasil! Selamat datang di Aurora Pulse.',
+        message: 'Registrasi berhasil! Selamat datang di Gelar Tikar.',
         token,
         user: {
           id: newUser.id,

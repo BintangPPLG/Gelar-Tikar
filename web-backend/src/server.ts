@@ -32,7 +32,7 @@ app.use('/api', apiRouter);
 // Root greeting
 app.get('/', (req, res) => {
   res.json({
-    message: '🎟️ Aurora Pulse Concert Ticketing API Server',
+    message: 'Gelar Tikar API',
     version: '1.0.0',
     documentation: '/api/health',
   });
@@ -46,7 +46,6 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 
 // Start Server & Test DB
 app.listen(PORT, async () => {
-  console.log(`🚀 [Aurora Pulse Backend]: Server running on http://localhost:${PORT}`);
-  console.log(`📡 [API Base URL]: http://localhost:${PORT}/api`);
+  console.log(`[Gelar Tikar] API berjalan di http://localhost:${PORT}/api`);
   await testDbConnection();
 });

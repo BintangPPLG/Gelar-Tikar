@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const JWT_SECRET = process.env.JWT_SECRET || 'super_secret_aurora_pulse_jwt_key_2026';
+const JWT_SECRET = process.env.JWT_SECRET || 'gelar_tikar_dev_secret';
 
 export interface TokenPayload {
   userId: number;

@@ -24,9 +24,9 @@ export const artistController = {
         name,
         genre,
         bio: bio || '',
-        image_url: image_url || '/assets/artist_headliner.jpg',
-        spotify_url: spotify_url || 'https://spotify.com',
-        instagram_url: instagram_url || 'https://instagram.com',
+        image_url: image_url || '',
+        spotify_url: spotify_url || '',
+        instagram_url: instagram_url || '',
       });
       res.status(201).json({ success: true, message: 'Artis berhasil ditambahkan.', data: newArtist });
     } catch (error: any) {

@@ -30,10 +30,10 @@ export async function testDbConnection(): Promise<boolean> {
     const connection = await db.getConnection();
     connection.release();
     isConnected = true;
-    console.log('✅ [MySQL Database]: Connected successfully to concert_tickets_db');
+    console.log('[MySQL] Tersambung ke database ' + (process.env.DB_NAME || 'concert_tickets_db'));
     return true;
   } catch (error: any) {
-    console.warn('⚠️ [MySQL Warning]:', error.message, '-> Using high-performance in-memory sync store.');
+    console.warn('[MySQL] Tidak tersambung (' + (error.code || error.message) + '). Memakai data contoh di memori.');
     isConnected = false;
     return false;
   }
@@ -48,4 +48,12 @@ export async function query<T = any>(sql: string, params: any[] = []): Promise<T
     console.warn('[MySQL Query Error]:', error.message);
     throw error;
   }
+}
+
+export function isDbReady(): boolean {
+  return isConnected;
+}
+
+export async function getConnection() {
+  return getDbPool().getConnection();
 }

@@ -1,47 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        festival: {
-          bg: '#08090c',
-          surface: '#111319',
-          card: '#151821',
-          elevated: '#1c202c',
-          border: 'rgba(255, 255, 255, 0.08)',
-          borderHover: 'rgba(255, 255, 255, 0.18)',
-        },
-        acid: {
-          DEFAULT: '#d4ff00',
-          hover: '#c2eb00',
-          subtle: 'rgba(212, 255, 0, 0.12)',
-          text: '#08090c',
-        },
-        cobalt: {
-          DEFAULT: '#3b82f6',
-          hover: '#2563eb',
-          subtle: 'rgba(59, 130, 246, 0.12)',
-        },
-        rose: {
-          DEFAULT: '#f43f5e',
-          subtle: 'rgba(244, 63, 94, 0.12)',
-        },
+        felt: { DEFAULT: '#1f3a2e', deep: '#172e23', groove: '#142a1f', line: '#2c4a3c' },
+        chalk: { DEFAULT: '#f2efe6', dim: '#b8c6b9', faint: '#88a091' },
+        paper: { DEFAULT: '#f5f2ea', warm: '#ece7da', edge: '#d9d2bf' },
+        ink: { DEFAULT: '#1b1b18', soft: '#4b4a43', faint: '#6f6c61' },
+        stamp: { DEFAULT: '#b83a24', deep: '#9a2f1c', tint: '#f3dcd5' },
+        wood: { DEFAULT: '#7b5b3b', light: '#9a7650' },
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
-        display: ['Space Grotesk', 'Plus Jakarta Sans', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        board: ['Archivo', 'Arial Narrow', 'sans-serif'],
+        sans: ['"Public Sans"', 'system-ui', 'sans-serif'],
       },
-      transitionTimingFunction: {
-        'emil-out': 'cubic-bezier(0.23, 1, 0.32, 1)',
-        'emil-in-out': 'cubic-bezier(0.77, 0, 0.175, 1)',
-      },
+      maxWidth: { page: '76rem' },
     },
   },
   plugins: [],
-}
-
+};

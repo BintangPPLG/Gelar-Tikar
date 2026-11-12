@@ -39,7 +39,7 @@ export const eventController = {
       const newEvent = await dbRepository.createEvent({
         ...eventData,
         slug,
-        banner_url: eventData.banner_url || '/assets/hero_stage.jpg',
+        banner_url: eventData.banner_url || '',
       });
       res.status(201).json({ success: true, message: 'Event berhasil ditambahkan.', data: newEvent });
     } catch (error: any) {

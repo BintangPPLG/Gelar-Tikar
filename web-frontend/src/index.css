@@ -2,100 +2,323 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ------------------------------------------------------------------
+   Gelar Tikar: papan huruf tempel + kertas pengumuman
+   ------------------------------------------------------------------ */
+:root {
+  --felt: #1f3a2e;
+  --felt-deep: #172e23;
+  --groove: #142a1f;
+  --chalk: #f2efe6;
+  --chalk-dim: #b8c6b9;
+  --paper: #f5f2ea;
+  --paper-warm: #ece7da;
+  --paper-edge: #d9d2bf;
+  --ink: #1b1b18;
+  --ink-soft: #4b4a43;
+  --stamp: #b83a24;
+  --wood: #7b5b3b;
+  /* jarak alur papan: semua baris huruf papan berdiri di alur ini */
+  --g: 12px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: light;
+}
+
 @layer base {
-  :root {
-    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 1rem;
   }
-
   body {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    background-color: #08090c;
-    color: #f3f4f6;
-    overflow-x: hidden;
-    letter-spacing: -0.01em;
+    font-family: 'Public Sans', system-ui, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.55;
+    background-color: var(--felt);
+    /* serat beludru + alur horizontal papan huruf */
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"),
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent calc(var(--g) * 2 - 1px),
+        var(--groove) calc(var(--g) * 2 - 1px),
+        var(--groove) calc(var(--g) * 2)
+      );
+    min-height: 100vh;
   }
-
-  h1, h2, h3, h4, .font-display {
-    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
-    letter-spacing: -0.03em;
+  ::selection {
+    background: var(--stamp);
+    color: #fff;
   }
-
-  .font-mono-num {
-    font-family: 'JetBrains Mono', monospace;
+  :focus-visible {
+    outline: 2px solid var(--stamp);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .on-felt :focus-visible,
+  .on-felt:focus-visible {
+    outline-color: var(--chalk);
+  }
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: #807d72;
+  }
+  .tnum {
     font-variant-numeric: tabular-nums;
   }
 }
 
-/* Emil Kowalski physical button responsiveness */
-.btn-tactile {
-  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out), opacity 160ms var(--ease-out), border-color 160ms var(--ease-out);
+/* Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4c6a5a var(--felt-deep);
 }
-.btn-tactile:active {
-  transform: scale(0.97);
-}
-
-/* Refined festival surface & card materiality */
-.fest-card {
-  background: rgba(17, 19, 25, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-
-.fest-card-hover {
-  transition: transform 220ms var(--ease-out), border-color 220ms var(--ease-out), box-shadow 220ms var(--ease-out);
-}
-.fest-card-hover:hover {
-  border-color: rgba(255, 255, 255, 0.18);
-  transform: translateY(-2px);
-  box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.fest-pill {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-/* Authentic ticket perforation & notch */
-.ticket-stub {
-  position: relative;
-  background: #111319;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-}
-
-.ticket-divider-dashed {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.25) 50%, transparent 50%);
-  background-size: 8px 1px;
-  background-repeat: repeat-x;
-  height: 1px;
-}
-
-/* Audio equalizer bars */
-@keyframes audioPulse {
-  0%, 100% { height: 4px; }
-  50% { height: 20px; }
-}
-
-.audio-bar-1 { animation: audioPulse 0.85s var(--ease-in-out) infinite; }
-.audio-bar-2 { animation: audioPulse 0.65s var(--ease-in-out) infinite 0.15s; }
-.audio-bar-3 { animation: audioPulse 1.05s var(--ease-in-out) infinite 0.3s; }
-.audio-bar-4 { animation: audioPulse 0.75s var(--ease-in-out) infinite 0.45s; }
-.audio-bar-5 { animation: audioPulse 0.95s var(--ease-in-out) infinite 0.2s; }
-
-/* Clean scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #08090c;
+  background: var(--felt-deep);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1c202c;
-  border-radius: 9999px;
+  background: #4c6a5a;
+  border: 2px solid var(--felt-deep);
+  border-radius: 6px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #d4ff00;
+
+@layer components {
+  /* Huruf papan: huruf plastik putih yang ditancapkan ke alur */
+  .board {
+    font-family: Archivo, 'Arial Narrow', sans-serif;
+    font-stretch: 92%;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--chalk);
+  }
+  .board-ch {
+    display: inline-block;
+    white-space: pre;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35), 0 2px 3px rgba(0, 0, 0, 0.25);
+  }
+  .board-in .board-ch {
+    animation: peg 520ms var(--ease-out) both;
+    animation-delay: calc(var(--i) * 14ms);
+  }
+  @keyframes peg {
+    from {
+      opacity: 0.08;
+      transform: translateY(-0.18em);
+      filter: blur(1.5px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .board-in .board-ch {
+      animation: none;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* Ukuran huruf papan, tinggi baris = kelipatan alur */
+  .b-xs { font-size: 0.8125rem; line-height: calc(var(--g) * 2); }
+  .b-sm { font-size: 1rem; line-height: calc(var(--g) * 2); }
+  .b-md { font-size: 1.375rem; line-height: calc(var(--g) * 3); }
+  .b-lg { font-size: clamp(1.5rem, 3.2vw, 2.25rem); line-height: calc(var(--g) * 4); }
+  .b-xl { font-size: clamp(2.75rem, 9.5vw, 6rem); line-height: 1.04; letter-spacing: 0.04em; }
+
+  /* Bingkai kayu tipis di sekeliling papan utama */
+  .frame {
+    border: 10px solid var(--wood);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35), inset 0 10px 24px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  @media (max-width: 640px) {
+    .frame {
+      border-width: 6px;
+    }
+  }
+
+  /* Kertas pengumuman */
+  .paper {
+    position: relative;
+    background-color: var(--paper);
+    color: var(--ink);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.18), 0 10px 22px -10px rgba(0, 0, 0, 0.55);
+  }
+  .paper-warm {
+    background-color: var(--paper-warm);
+  }
+  .rule {
+    border-color: var(--paper-edge);
+  }
+
+  /* Paku payung */
+  .pin {
+    position: absolute;
+    top: -7px;
+    width: 14px;
+    height: 14px;
+    /* paku payung datar: kepala merah, cincin tepi, bayangan jatuh ke kanan bawah */
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Ccircle cx='8.5' cy='8.5' r='5.5' fill='%23000' fill-opacity='.28'/%3E%3Ccircle cx='6.5' cy='6.5' r='5.5' fill='%23b83a24'/%3E%3Ccircle cx='6.5' cy='6.5' r='3.2' fill='none' stroke='%239a2f1c' stroke-width='1'/%3E%3C/svg%3E") no-repeat;
+    z-index: 2;
+  }
+
+  /* Tombol */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0 1.15rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    border-radius: 3px;
+    transition: background-color 160ms var(--ease-out), transform 120ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+  .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  .btn-stamp {
+    background: var(--stamp);
+    color: #fff;
+  }
+  .btn-stamp:hover:not(:disabled) {
+    background: #9a2f1c;
+  }
+  .btn-ink {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .btn-ink:hover:not(:disabled) {
+    background: #34332d;
+  }
+  .btn-line {
+    border: 1px solid #b9b19c;
+    color: var(--ink);
+    background: transparent;
+  }
+  .btn-line:hover:not(:disabled) {
+    border-color: var(--ink);
+    background: rgba(27, 27, 24, 0.04);
+  }
+  .btn-chalk {
+    border: 1px solid rgba(242, 239, 230, 0.45);
+    color: var(--chalk);
+  }
+  .btn-chalk:hover:not(:disabled) {
+    border-color: var(--chalk);
+    background: rgba(242, 239, 230, 0.06);
+  }
+  .btn-sm {
+    min-height: 36px;
+    padding: 0 0.8rem;
+    font-size: 0.875rem;
+  }
+
+  /* Field formulir di atas kertas */
+  .field {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    padding: 0.55rem 0.75rem;
+    background: #fffdf8;
+    border: 1px solid #c9c1ab;
+    border-radius: 3px;
+    transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+  }
+  .field:hover {
+    border-color: #a69d85;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px rgba(184, 58, 36, 0.18);
+  }
+  .field[aria-invalid='true'] {
+    border-color: var(--stamp);
+  }
+  .label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+    color: var(--ink);
+  }
+
+  /* Stempel status */
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.1rem 0.5rem;
+    border: 1.5px solid currentColor;
+    border-radius: 3px;
+    font-family: Archivo, sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    white-space: nowrap;
+  }
+
+  .stamp-pending {
+    color: var(--ink-soft);
+    border-style: dashed;
+  }
+  .stamp-paid {
+    color: var(--stamp);
+    border-width: 2px;
+    transform: rotate(-2deg);
+  }
+  .stamp-rejected {
+    color: var(--stamp);
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+  }
+
+  /* Tautan pada kertas */
+  .link {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: #b9b19c;
+  }
+  .link:hover {
+    text-decoration-color: var(--stamp);
+  }
+
+  /* Garis putus sobekan karcis */
+  .perforation {
+    background-image: radial-gradient(circle, #b5ab92 1.2px, transparent 1.4px);
+    background-size: 9px 3px;
+    background-repeat: repeat-x;
+    height: 3px;
+  }
 }

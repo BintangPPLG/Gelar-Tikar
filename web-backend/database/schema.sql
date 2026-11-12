@@ -1,7 +1,10 @@
 -- ====================================================================
--- DATABASE SCHEMA: AURORA PULSE CONCERT TICKETING SYSTEM
+-- DATABASE SCHEMA: GELAR TIKAR (WEB TIKET FESTIVAL)
 -- Engine: MySQL 8.0+ / MariaDB 10.5+
 -- ====================================================================
+
+-- Pastikan teks (mis. tanda –) tersimpan benar walau diimpor dari terminal Windows.
+SET NAMES utf8mb4;
 
 CREATE DATABASE IF NOT EXISTS concert_tickets_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE concert_tickets_db;
@@ -134,66 +137,87 @@ CREATE TABLE IF NOT EXISTS payments (
 ) ENGINE=InnoDB;
 
 -- ====================================================================
--- SEEDER DATA (Initial Default Records)
+-- DATA AWAL (fiktif, untuk demo)
+-- Admin  : admin@gelartikar.id / Admin12345!
+-- Pembeli: customer@gmail.com  / User12345!
 -- ====================================================================
 
--- 1. Insert Default Users (Admin & Customer)
--- Admin Password: AdminAurora2026! (Bcrypt hashed)
--- Customer Password: User12345! (Bcrypt hashed)
+-- 1. Users
 INSERT IGNORE INTO users (id, name, email, password, phone, role) VALUES
-(1, 'Administrator Aurora', 'admin@aurorapulse.com', '$2b$10$cOJGFBHh4IWF4uTICQ2iS.eFU5jCloEIeUdkCNnLqUmBLUaFIp0ay', '081122334455', 'admin'),
-(2, 'Raditya Pratama', 'customer@gmail.com', '$2b$10$pTULJU3LYV2FL92tIgIRXe1d43Uh.SttoXuYqemCxNX64fYifObr.', '081234567890', 'customer');
+(1, 'Panitia Gelar Tikar', 'admin@gelartikar.id', '$2b$10$opw14/uPxi4drknJZ/9NmeGRU.KcPRMOEq9YoGNy.168LR4Q0Bjjm', '081122334455', 'admin'),
+(2, 'Raditya Pratama', 'raditya@example.com', '$2b$10$zCSKQO/LQsKfYI0IflKooeS85yZKOhYI7S8UKn7wy2wePe/C9hRx2', '081234567890', 'customer');
 
-
--- 2. Insert Artists
+-- 2. Artists
 INSERT IGNORE INTO artists (id, name, genre, bio, image_url, spotify_url, instagram_url) VALUES
-(1, 'Cyber Nexus', 'Progressive Synthwave / Electro', 'Produser musik elektronik pelopor tata suara spatial 360 audio dari Amsterdam.', '/assets/artist_headliner.jpg', 'https://spotify.com', 'https://instagram.com'),
-(2, 'Stella Vortex', 'Melodic Techno & Live Vocals', 'Vokalis & DJ dengan performa visual panggung interaktif pemenang Grammy nominee.', '/assets/festival_atmosphere.jpg', 'https://spotify.com', 'https://instagram.com'),
-(3, 'Kinetic Pulse', 'Modular Synth Live Ensemble', 'Duo komposer modular synth dengan pertunjukan live laser multi-dimensi.', '/assets/hero_stage.jpg', 'https://spotify.com', 'https://instagram.com'),
-(4, 'Hyperion Echo', 'Future Bass / Cinematic', 'Produser musik bass melodis nomor satu dengan 500M+ total streaming global.', '/assets/artist_headliner.jpg', 'https://spotify.com', 'https://instagram.com');
+(1, 'Kapal Kertas', 'Pop indie', 'Kuintet asal Bekasi yang menulis lagu tentang perjalanan pulang kerja.', NULL, NULL, NULL),
+(2, 'Radio Tetangga', 'Rock alternatif', 'Trio gitar dari Surabaya; liriknya diambil dari obrolan di gang rumah.', NULL, NULL, NULL),
+(3, 'Jemuran Basah', 'Folk', 'Duo akustik dari Yogyakarta dengan gitar, ukulele, dan harmonika.', NULL, NULL, NULL),
+(4, 'Anak Tangga', 'Math rock', 'Empat orang dari Bandung yang gemar birama ganjil.', NULL, NULL, NULL),
+(5, 'Lampu Kuning', 'Dream pop', 'Band lima orang dari Jakarta Selatan dengan suara gitar yang berlapis.', NULL, NULL, NULL),
+(6, 'Sepatu Lumpur', 'Punk', 'Punk cepat dan pendek dari Tangerang. Setiap lagu kurang dari dua menit.', NULL, NULL, NULL),
+(7, 'Ombak Pagi', 'Surf pop', 'Band empat orang dari Denpasar dengan gitar bergema dan lagu musim panas.', NULL, NULL, NULL),
+(8, 'Tukang Pos Kesiangan', 'Ska', 'Tujuh personel dari Malang dengan seksi tiup yang selalu mengajak berdansa.', NULL, NULL, NULL),
+(9, 'Nadia Laras', 'Pop balada', 'Penyanyi dan penulis lagu dari Medan, tampil bersama band lengkap.', NULL, NULL, NULL),
+(10, 'Kebun Belakang', 'Shoegaze', 'Band empat orang dari Bogor; banyak pedal, sedikit bicara.', NULL, NULL, NULL),
+(11, 'Pita Kaset', 'Indie pop', 'Trio dari Semarang yang merilis semua lagunya dalam bentuk kaset.', NULL, NULL, NULL),
+(12, 'Rumah Jamur', 'Rock psikedelik', 'Band empat orang dari Malang dengan jam session panjang di tengah lagu.', NULL, NULL, NULL);
 
--- 3. Insert Events
+-- 3. Events
 INSERT IGNORE INTO events (id, title, slug, description, banner_url, venue_name, venue_address, event_date, end_date, status) VALUES
-(1, 'AURORA PULSE: WORLD TOUR 2026', 'aurora-pulse-world-tour-2026', 'Festival musik audio visual 360 spatial sound termegah di Asia Tenggara dengan 40+ artis dunia, laser show 64 unit, dan panggung multi-dimensi.', '/assets/hero_stage.jpg', 'Stadion Madya Gelora Bung Karno', 'Jl. Gerbang Pemuda No.3, Gelora, Tanah Abang, Jakarta Pusat 10270', '2026-10-18 16:00:00', '2026-10-20 23:30:00', 'open'),
-(2, 'BALI SUNSET SOUNDSCAPE 2026', 'bali-sunset-soundscape-2026', 'Konser intim tepi pantai dengan aransemen ambient house, live orchestra sunset session, dan culinary art festival.', '/assets/festival_atmosphere.jpg', 'GWK Cultural Park & Lotus Pond', 'Jl. Raya Uluwatu, Ungasan, Kuta Selatan, Badung, Bali 80364', '2026-11-28 15:00:00', '2026-11-29 23:00:00', 'open'),
-(3, 'NEON TOKYO CYBER RAVE 2026', 'neon-tokyo-cyber-rave-2026', 'Eksplorasi musik electronic & future rave berkonsep cyberpunk dengan panggung hologram 3D dan tata cahaya laser multi-spektrum.', '/assets/artist_headliner.jpg', 'PIK 2 International Convention & Arena', 'Kawasan Pantai Indah Kapuk 2, Tangerang, Banten 15510', '2026-12-12 17:00:00', '2026-12-13 03:00:00', 'open'),
-(4, 'JAVA JAZZ & ELECTRO FUSION 2026', 'java-jazz-electro-fusion-2026', 'Kolaborasi magis musisi jazz legendaris berpadu modulasi electronic synth modern di bawah hawa sejuk kota Bandung.', '/assets/festival_atmosphere.jpg', 'Eldorado Dome & Amphitheater', 'Jl. Dr. Setiabudi No.438, Isola, Sukasari, Kota Bandung 40154', '2026-12-31 18:00:00', '2027-01-01 01:30:00', 'open'),
-(5, 'SURABAYA ROCK SYMPHONY 2026', 'surabaya-rock-symphony-2026', 'Distorsi rock spektakuler berbalut orkestrasi simfoni megah 60-piece orchestra membawakan anthem legendaris sepanjang masa.', '/assets/hero_stage.jpg', 'Grand City Convention & Exhibition', 'Jl. Walikota Mustajab No.1, Ketabang, Genteng, Kota Surabaya 60272', '2027-01-16 19:00:00', '2027-01-16 23:30:00', 'open');
+(1, 'Gelar Tikar 2027 Jakarta', 'gelar-tikar-2027-jakarta', 'Tiga hari musik band dan indie lokal di tiga panggung. Bawa tikar, datang dari sore, pulang setelah band terakhir.', '', 'Lapangan Parkir Timur Senayan', 'Jl. Pintu Satu Senayan, Gelora, Tanah Abang, Jakarta Pusat', '2027-02-19 15:00:00', '2027-02-21 23:00:00', 'open'),
+(2, 'Gelar Tikar 2027 Bandung', 'gelar-tikar-2027-bandung', 'Satu hari penuh di Bandung dengan band math rock, shoegaze, dan dream pop.', '', 'Lapangan Saparua', 'Jl. Banda No. 28, Citarum, Bandung Wetan, Kota Bandung', '2027-03-13 14:00:00', '2027-03-13 23:00:00', 'open'),
+(3, 'Gelar Tikar 2027 Yogyakarta', 'gelar-tikar-2027-yogyakarta', 'Dua hari di Yogyakarta: folk dan pop di hari Sabtu, rock di hari Minggu.', '', 'Stadion Kridosono', 'Jl. Yos Sudarso, Kotabaru, Gondokusuman, Kota Yogyakarta', '2027-04-10 15:00:00', '2027-04-11 23:00:00', 'open'),
+(4, 'Gelar Tikar 2027 Surabaya', 'gelar-tikar-2027-surabaya', 'Satu malam ska, punk, dan rock alternatif di Surabaya.', '', 'Jatim Expo', 'Jl. Ahmad Yani No. 99, Gayungan, Kota Surabaya', '2027-05-08 15:00:00', '2027-05-08 23:00:00', 'open');
 
--- 4. Link Event with Artists
+-- 4. Lineup (panggung A = Teras, B = Pendopo, C = Serambi)
 INSERT IGNORE INTO event_artists (id, event_id, artist_id, stage_name, performance_time, day_number) VALUES
-(1, 1, 1, 'Aurora Mainframe Stage', '22:30 WIB', 1),
-(2, 1, 2, 'Cosmic Dome', '20:45 WIB', 1),
-(3, 1, 3, 'Neon Realm', '19:15 WIB', 1),
-(4, 1, 4, 'Aurora Mainframe Stage', '18:00 WIB', 1),
-(5, 2, 2, 'Sunset Amphitheater', '17:30 WITA', 1),
-(6, 2, 3, 'Lotus Sanctuary', '20:00 WITA', 1);
+(1, 1, 11, 'A · Teras', '16:00', 1),
+(2, 1, 3, 'C · Serambi', '17:30', 1),
+(3, 1, 5, 'B · Pendopo', '19:00', 1),
+(4, 1, 1, 'A · Teras', '21:00', 1),
+(5, 1, 6, 'C · Serambi', '16:00', 2),
+(6, 1, 7, 'B · Pendopo', '17:30', 2),
+(7, 1, 4, 'B · Pendopo', '19:00', 2),
+(8, 1, 2, 'A · Teras', '21:00', 2),
+(9, 1, 10, 'C · Serambi', '16:00', 3),
+(10, 1, 12, 'A · Teras', '17:30', 3),
+(11, 1, 8, 'B · Pendopo', '19:00', 3),
+(12, 1, 9, 'A · Teras', '21:00', 3),
+(13, 2, 10, 'A · Teras', '16:00', 1),
+(14, 2, 5, 'A · Teras', '18:30', 1),
+(15, 2, 4, 'A · Teras', '21:00', 1),
+(16, 3, 3, 'A · Teras', '17:00', 1),
+(17, 3, 1, 'A · Teras', '20:30', 1),
+(18, 3, 7, 'A · Teras', '17:00', 2),
+(19, 3, 12, 'A · Teras', '20:30', 2),
+(20, 4, 6, 'A · Teras', '16:30', 1),
+(21, 4, 8, 'A · Teras', '19:00', 1),
+(22, 4, 2, 'A · Teras', '21:00', 1);
 
--- 5. Insert Ticket Tiers
+-- 5. Ticket tiers
 INSERT IGNORE INTO ticket_tiers (id, event_id, name, price, total_quota, sold_count, description, perks_json, status) VALUES
-(1, 1, 'VIP Cosmic Holographic Pass', 2850000.00, 150, 65, 'Akses baris terdepan dengan fasilitas lounge eksklusif dan merchandise resmi festival.', '["Akses Baris Paling Depan Main Stage", "Fast-Track VIP Entrance", "Akses VIP AC Lounge & Free Flow Drink", "Official Limited Boxset Merch", "Akses Soundcheck Artis"]', 'active'),
-(2, 1, 'CAT 1 Front Standing', 1650000.00, 800, 520, 'Pengalaman festival terbaik di area berdiri dengan akustik 360 spatial audio paling bertenaga.', '["Area Berdiri di Belakang VIP", "Akses 3 Panggung Festival", "Sound Stage 360 Spatial Sweetspot", "Smart RFID LED Wristband"]', 'active'),
-(3, 1, 'CAT 2 Tribune Seating', 950000.00, 1200, 310, 'Kenyamanan tempat duduk bernomor di tribun beratap dengan pandangan menyeluruh panggung.', '["Nomor Kursi Tetap Berkanopi", "Pandangan Penuh Efek Laser", "Akses Toilet & F&B Khusus Tribun", "Smart RFID LED Wristband"]', 'active'),
-(4, 1, '3-Day All-Access Pass', 4200000.00, 300, 190, 'Tiket terusan 3 hari penuh untuk menyaksikan seluruh 40+ artis dan pesta kembang api penutupan.', '["Akses Terusan 3 Hari Penuh", "Fast-Track Entrance Tiap Hari", "Akses After-Party Penutupan", "RFID Commemorative Metal Band"]', 'active'),
-(5, 2, 'Sunset Beach Club VIP Bed Pass', 3200000.00, 80, 42, 'Daybed privat pinggir tebing GWK termasuk welcome cocktails dan canapés eksklusif.', '["Private Daybed Lounge (Up to 2 Pax)", "Welcome Artisan Cocktail & Canapés", "Priority Parking & Buggy Shuttle", "Sunset Photo Session Pass"]', 'active'),
-(6, 2, 'Lotus General Admission', 1250000.00, 1500, 890, 'Akses bebas area amfiteater taman budaya GWK dan zona seni instalasi malam.', '["Akses Sunset Amphitheater", "Akses Culinary Arts Zone", "Free Eco Bamboo Straw & Drink Voucher"]', 'active'),
-(7, 2, '2-Day Sunset Weekend Pass', 2100000.00, 500, 320, 'Tiket terusan akhir pekan 2 hari penuh termasuk sesi yoga akustik pagi hari.', '["Akses 2 Hari Weekend Penuh", "Morning Acoustic Yoga Session", "Merchandise Festival Bag"]', 'active'),
-(8, 3, 'Cyber Rave Mainstage GA', 850000.00, 2000, 1150, 'Akses penuh dance floor laser arena dengan tata audio 120.000 watt.', '["Akses Cyber Dancefloor", "Neon LED Glow Glasses", "RFID Access Band"]', 'active'),
-(9, 3, 'Hologram Deck VIP Pass', 1950000.00, 200, 140, 'Akses panggung dek bertingkat dengan pemandangan langsung ke set hologram artis.', '["Elevated VIP Hologram Deck", "Private Bar & Quick Queue", "Complimentary Energy Glow Drink"]', 'active'),
-(10, 4, 'Amphitheater Seating Pass', 750000.00, 900, 410, 'Tempat duduk berjenjang dengan akustik alami terbaik di Eldorado Dome Bandung.', '["Reserved Seating Area", "Akses Zona Kuliner Kopi Bandung", "Festival Programme Booklet"]', 'active'),
-(11, 4, 'New Year Eve VIP Celebration Pass', 1850000.00, 250, 180, 'Paket countdown tahun baru eksklusif dengan gala dinner dan countdown toast.', '["Front Row VIP Table", "New Year Dinner Buffet & Toast", "Meet & Greet Musisi Jazz"]', 'active'),
-(12, 5, 'Rock Pit Standing Pass', 650000.00, 1200, 730, 'Area berdiri tepat di depan panggung rock orchestra dengan atmosfer paling bertenaga.', '["Akses Rock Pit Standing", "Official Band & Orchestra Tour Pick Badge", "Fast-Track Entrance"]', 'active'),
-(13, 5, 'Orchestra Platinum Hall Pass', 1450000.00, 400, 260, 'Tempat duduk platinum dengan sudut pandang dan perpaduan suara orkestra paling sempurna.', '["Platinum Numbered Seating", "Akses Platinum Lounge", "Exclusive Vinyl Sleeve Souvenir"]', 'active');
+(1, 1, 'Tiket Jumat', 175000.00, 2500, 1640, 'Masuk hari Jumat, 19 Februari.', '["Berlaku Jumat, 19 Februari","Akses ketiga panggung","Gelang kain festival"]', 'active'),
+(2, 1, 'Tiket Sabtu', 200000.00, 2500, 2210, 'Masuk hari Sabtu, 20 Februari.', '["Berlaku Sabtu, 20 Februari","Akses ketiga panggung","Gelang kain festival"]', 'active'),
+(3, 1, 'Tiket Minggu', 200000.00, 2500, 1985, 'Masuk hari Minggu, 21 Februari.', '["Berlaku Minggu, 21 Februari","Akses ketiga panggung","Gelang kain festival"]', 'active'),
+(4, 1, 'Terusan 3 Hari', 495000.00, 1500, 1310, 'Masuk Jumat sampai Minggu dengan satu gelang.', '["Berlaku 19–21 Februari","Akses ketiga panggung","Gelang kain festival","Jalur masuk terpisah di Gerbang 2"]', 'active'),
+(5, 2, 'Reguler', 150000.00, 2000, 870, 'Masuk untuk satu orang.', '["Berlaku Sabtu, 13 Maret","Gelang kain festival"]', 'active'),
+(6, 2, 'Tikar Berdua', 280000.00, 300, 214, 'Satu tiket untuk dua orang, termasuk tikar resmi Gelar Tikar.', '["Untuk 2 orang","Tikar anyam ukuran 1×2 m","Gelang kain festival"]', 'active'),
+(7, 3, 'Tiket Sabtu', 150000.00, 1800, 640, 'Masuk hari Sabtu, 10 April.', '["Berlaku Sabtu, 10 April","Gelang kain festival"]', 'active'),
+(8, 3, 'Tiket Minggu', 150000.00, 1800, 590, 'Masuk hari Minggu, 11 April.', '["Berlaku Minggu, 11 April","Gelang kain festival"]', 'active'),
+(9, 3, 'Terusan 2 Hari', 260000.00, 800, 455, 'Masuk Sabtu dan Minggu dengan satu gelang.', '["Berlaku 10–11 April","Gelang kain festival"]', 'active'),
+(10, 4, 'Presale', 110000.00, 500, 500, 'Harga presale, terbatas 500 tiket.', '["Berlaku Sabtu, 8 Mei","Gelang kain festival"]', 'sold_out'),
+(11, 4, 'Reguler', 140000.00, 1500, 380, 'Masuk untuk satu orang.', '["Berlaku Sabtu, 8 Mei","Gelang kain festival"]', 'active');
 
--- 6. Insert Sample Orders & Payment
+-- 6. Contoh pesanan
 INSERT IGNORE INTO orders (id, order_code, user_id, event_id, total_amount, customer_name, customer_email, customer_phone, customer_id_card, status) VALUES
-(1, 'AP26-ORD-839102', 2, 1, 2875000.00, 'Raditya Pratama', 'customer@gmail.com', '081234567890', '3171029384756102', 'paid'),
-(2, 'AP26-ORD-519284', NULL, 1, 1675000.00, 'Siti Nurhaliza', 'siti.nur@example.com', '085712349911', '3201948572019283', 'pending');
+(1, 'GT-7K2M9Q', 2, 1, 505000.00, 'Raditya Pratama', 'raditya@example.com', '081234567890', '3171029384756102', 'paid'),
+(2, 'GT-P4X8WD', NULL, 1, 410000.00, 'Siti Nurhaliza', 'siti.nur@example.com', '085712349911', '3201948572019283', 'pending');
 
 INSERT IGNORE INTO order_items (id, order_id, ticket_tier_id, ticket_code, quantity, unit_price, subtotal) VALUES
-(1, 1, 1, 'TKT-AP26-VIP-839102', 1, 2850000.00, 2850000.00),
-(2, 2, 2, 'TKT-AP26-CAT1-519284', 1, 1650000.00, 1650000.00);
+(1, 1, 4, 'GT-JKT-7K2M9Q-1', 1, 495000.00, 495000.00),
+(2, 2, 2, 'GT-JKT-P4X8WD-1', 2, 200000.00, 400000.00);
 
 INSERT IGNORE INTO payments (id, order_id, payment_method, payment_reference, amount, proof_image_url, status, verified_at, verified_by) VALUES
-(1, 1, 'qris', 'QRIS-NMID-98237419', 2875000.00, NULL, 'verified', NOW(), 1),
-(2, 2, 'virtual_account', 'VA-BCA-8801928374619283', 1675000.00, NULL, 'pending', NULL, NULL);
+(1, 1, 'qris', 'QRIS-7K2M9Q', 505000.00, NULL, 'verified', NOW(), 1),
+(2, 2, 'virtual_account', '8808 0812 3412 9911', 410000.00, NULL, 'pending', NULL, NULL);
+

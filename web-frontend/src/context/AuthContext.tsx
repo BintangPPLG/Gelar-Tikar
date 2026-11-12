@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { api, User } from '../api/client';
+import { api, User, TOKEN_KEY, USER_KEY } from '../api/client';
 
 interface AuthContextType {
   user: User | null;
@@ -21,8 +21,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const initAuth = async () => {
-    const savedToken = localStorage.getItem('aurora_token');
-    const savedUser = localStorage.getItem('aurora_user');
+    const savedToken = localStorage.getItem(TOKEN_KEY);
+    const savedUser = localStorage.getItem(USER_KEY);
 
     if (savedToken && savedUser) {
       try {
@@ -32,12 +32,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const res = await api.auth.me();
         if (res.success && res.user) {
           setUser(res.user);
-          localStorage.setItem('aurora_user', JSON.stringify(res.user));
+          localStorage.setItem(USER_KEY, JSON.stringify(res.user));
         }
       } catch (err) {
         console.warn('Session expired or invalid, clearing local session.');
-        localStorage.removeItem('aurora_token');
-        localStorage.removeItem('aurora_user');
+        localStorage.removeItem(TOKEN_KEY);
+        localStorage.removeItem(USER_KEY);
         setToken(null);
         setUser(null);
       }
@@ -54,8 +54,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (res.success && res.token && res.user) {
       setToken(res.token);
       setUser(res.user);
-      localStorage.setItem('aurora_token', res.token);
-      localStorage.setItem('aurora_user', JSON.stringify(res.user));
+      localStorage.setItem(TOKEN_KEY, res.token);
+      localStorage.setItem(USER_KEY, JSON.stringify(res.user));
     } else {
       throw new Error(res.message || 'Login gagal.');
     }
@@ -66,16 +66,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (res.success && res.token && res.user) {
       setToken(res.token);
       setUser(res.user);
-      localStorage.setItem('aurora_token', res.token);
-      localStorage.setItem('aurora_user', JSON.stringify(res.user));
+      localStorage.setItem(TOKEN_KEY, res.token);
+      localStorage.setItem(USER_KEY, JSON.stringify(res.user));
     } else {
       throw new Error(res.message || 'Registrasi gagal.');
     }
   };
 
   const logout = () => {
-    localStorage.removeItem('aurora_token');
-    localStorage.removeItem('aurora_user');
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
     setToken(null);
     setUser(null);
   };
@@ -85,7 +85,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const res = await api.auth.me();
       if (res.success && res.user) {
         setUser(res.user);
-        localStorage.setItem('aurora_user', JSON.stringify(res.user));
+        localStorage.setItem(USER_KEY, JSON.stringify(res.user));
       }
     } catch {
       logout();

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import { dbRepository } from '../services/store.js';
+import { dbRepository, OrderError } from '../services/store.js';
+import { AuthenticatedRequest } from '../middleware/auth.js';
 
 export const adminController = {
   // GET /api/admin/dashboard
@@ -24,7 +25,7 @@ export const adminController = {
   },
 
   // PATCH /api/admin/orders/:id/verify
-  async verifyOrder(req: Request, res: Response) {
+  async verifyOrder(req: AuthenticatedRequest, res: Response) {
     try {
       const id = Number(req.params.id);
       const { status } = req.body; // 'verified' | 'rejected'
@@ -34,7 +35,7 @@ export const adminController = {
         return;
       }
 
-      const order = await dbRepository.verifyPayment(id, status);
+      const order = await dbRepository.verifyPayment(id, status, req.user?.userId);
       if (!order) {
         res.status(404).json({ success: false, message: 'Pesanan tidak ditemukan.' });
         return;
@@ -42,10 +43,14 @@ export const adminController = {
 
       res.json({
         success: true,
-        message: status === 'verified' ? 'Pesanan berhasil disetujui (PAID)!' : 'Pesanan ditolak/dibatalkan.',
+        message: status === 'verified' ? 'Pembayaran disetujui. E-tiket pembeli sekarang aktif.' : 'Pembayaran ditolak. Kuota tiket dikembalikan.',
         data: order,
       });
     } catch (error: any) {
+      if (error instanceof OrderError) {
+        res.status(400).json({ success: false, message: error.message });
+        return;
+      }
       res.status(500).json({ success: false, message: 'Gagal memproses verifikasi pesanan.' });
     }
   },

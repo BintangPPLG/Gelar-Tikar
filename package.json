@@ -1,11 +1,11 @@
 {
-  "name": "aurora-pulse",
+  "name": "gelar-tikar",
   "version": "1.0.0",
   "private": true,
-  "description": "Aurora Pulse - Fullstack Concert Ticketing System",
+  "description": "Gelar Tikar - web tiket festival band dan indie lokal",
   "scripts": {
     "dev:backend": "cd web-backend && npm run dev",
     "dev:frontend": "cd web-frontend && npm run dev"
   },
-  "keywords": ["concert", "tickets", "music-festival", "nextjs", "react", "express", "mysql"]
+  "keywords": ["concert", "tickets", "music-festival", "react", "express", "mysql"]
 }

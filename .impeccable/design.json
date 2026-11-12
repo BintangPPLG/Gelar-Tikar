@@ -1,0 +1,478 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-12T16:10:23.341Z",
+  "title": "Design System: Gelar Tikar",
+  "extensions": {
+    "colorMeta": {
+      "felt": {
+        "role": "neutral",
+        "displayName": "Beludru Hijau Botol",
+        "canonical": "oklch(32.3% 0.040 164.0)",
+        "tonalRamp": [
+          "oklch(15% 0.040 164.0)",
+          "oklch(25% 0.040 164.0)",
+          "oklch(35% 0.040 164.0)",
+          "oklch(45% 0.040 164.0)",
+          "oklch(55% 0.040 164.0)",
+          "oklch(65% 0.040 164.0)",
+          "oklch(80% 0.040 164.0)",
+          "oklch(95% 0.040 164.0)"
+        ]
+      },
+      "felt-deep": {
+        "role": "neutral",
+        "displayName": "Beludru Dalam",
+        "canonical": "oklch(27.8% 0.036 162.1)",
+        "tonalRamp": [
+          "oklch(15% 0.036 162.1)",
+          "oklch(25% 0.036 162.1)",
+          "oklch(35% 0.036 162.1)",
+          "oklch(45% 0.036 162.1)",
+          "oklch(55% 0.036 162.1)",
+          "oklch(65% 0.036 162.1)",
+          "oklch(80% 0.036 162.1)",
+          "oklch(95% 0.036 162.1)"
+        ]
+      },
+      "felt-groove": {
+        "role": "neutral",
+        "displayName": "Alur Papan",
+        "canonical": "oklch(26.3% 0.035 160.9)",
+        "tonalRamp": [
+          "oklch(15% 0.035 160.9)",
+          "oklch(25% 0.035 160.9)",
+          "oklch(35% 0.035 160.9)",
+          "oklch(45% 0.035 160.9)",
+          "oklch(55% 0.035 160.9)",
+          "oklch(65% 0.035 160.9)",
+          "oklch(80% 0.035 160.9)",
+          "oklch(95% 0.035 160.9)"
+        ]
+      },
+      "felt-line": {
+        "role": "neutral",
+        "displayName": "Garis Beludru",
+        "canonical": "oklch(38.1% 0.043 163.3)",
+        "tonalRamp": [
+          "oklch(15% 0.043 163.3)",
+          "oklch(25% 0.043 163.3)",
+          "oklch(35% 0.043 163.3)",
+          "oklch(45% 0.043 163.3)",
+          "oklch(55% 0.043 163.3)",
+          "oklch(65% 0.043 163.3)",
+          "oklch(80% 0.043 163.3)",
+          "oklch(95% 0.043 163.3)"
+        ]
+      },
+      "chalk": {
+        "role": "neutral",
+        "displayName": "Kapur",
+        "canonical": "oklch(95.2% 0.012 91.5)",
+        "tonalRamp": [
+          "oklch(15% 0.012 91.5)",
+          "oklch(25% 0.012 91.5)",
+          "oklch(35% 0.012 91.5)",
+          "oklch(45% 0.012 91.5)",
+          "oklch(55% 0.012 91.5)",
+          "oklch(65% 0.012 91.5)",
+          "oklch(80% 0.012 91.5)",
+          "oklch(95% 0.012 91.5)"
+        ]
+      },
+      "chalk-dim": {
+        "role": "neutral",
+        "displayName": "Kapur Redup",
+        "canonical": "oklch(81.2% 0.024 147.4)",
+        "tonalRamp": [
+          "oklch(15% 0.024 147.4)",
+          "oklch(25% 0.024 147.4)",
+          "oklch(35% 0.024 147.4)",
+          "oklch(45% 0.024 147.4)",
+          "oklch(55% 0.024 147.4)",
+          "oklch(65% 0.024 147.4)",
+          "oklch(80% 0.024 147.4)",
+          "oklch(95% 0.024 147.4)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Kertas",
+        "canonical": "oklch(96.1% 0.011 89.7)",
+        "tonalRamp": [
+          "oklch(15% 0.011 89.7)",
+          "oklch(25% 0.011 89.7)",
+          "oklch(35% 0.011 89.7)",
+          "oklch(45% 0.011 89.7)",
+          "oklch(55% 0.011 89.7)",
+          "oklch(65% 0.011 89.7)",
+          "oklch(80% 0.011 89.7)",
+          "oklch(95% 0.011 89.7)"
+        ]
+      },
+      "paper-warm": {
+        "role": "neutral",
+        "displayName": "Kertas Hangat",
+        "canonical": "oklch(92.8% 0.018 89.4)",
+        "tonalRamp": [
+          "oklch(15% 0.018 89.4)",
+          "oklch(25% 0.018 89.4)",
+          "oklch(35% 0.018 89.4)",
+          "oklch(45% 0.018 89.4)",
+          "oklch(55% 0.018 89.4)",
+          "oklch(65% 0.018 89.4)",
+          "oklch(80% 0.018 89.4)",
+          "oklch(95% 0.018 89.4)"
+        ]
+      },
+      "paper-edge": {
+        "role": "neutral",
+        "displayName": "Tepi Kertas",
+        "canonical": "oklch(86.4% 0.027 90.1)",
+        "tonalRamp": [
+          "oklch(15% 0.027 90.1)",
+          "oklch(25% 0.027 90.1)",
+          "oklch(35% 0.027 90.1)",
+          "oklch(45% 0.027 90.1)",
+          "oklch(55% 0.027 90.1)",
+          "oklch(65% 0.027 90.1)",
+          "oklch(80% 0.027 90.1)",
+          "oklch(95% 0.027 90.1)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "oklch(22.1% 0.006 106.9)",
+        "tonalRamp": [
+          "oklch(15% 0.006 106.9)",
+          "oklch(25% 0.006 106.9)",
+          "oklch(35% 0.006 106.9)",
+          "oklch(45% 0.006 106.9)",
+          "oklch(55% 0.006 106.9)",
+          "oklch(65% 0.006 106.9)",
+          "oklch(80% 0.006 106.9)",
+          "oklch(95% 0.006 106.9)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Tinta Lunak",
+        "canonical": "oklch(40.8% 0.011 100.2)",
+        "tonalRamp": [
+          "oklch(15% 0.011 100.2)",
+          "oklch(25% 0.011 100.2)",
+          "oklch(35% 0.011 100.2)",
+          "oklch(45% 0.011 100.2)",
+          "oklch(55% 0.011 100.2)",
+          "oklch(65% 0.011 100.2)",
+          "oklch(80% 0.011 100.2)",
+          "oklch(95% 0.011 100.2)"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Tinta Pudar",
+        "canonical": "oklch(53.1% 0.017 94.4)",
+        "tonalRamp": [
+          "oklch(15% 0.017 94.4)",
+          "oklch(25% 0.017 94.4)",
+          "oklch(35% 0.017 94.4)",
+          "oklch(45% 0.017 94.4)",
+          "oklch(55% 0.017 94.4)",
+          "oklch(65% 0.017 94.4)",
+          "oklch(80% 0.017 94.4)",
+          "oklch(95% 0.017 94.4)"
+        ]
+      },
+      "stamp": {
+        "role": "primary",
+        "displayName": "Merah Stempel",
+        "canonical": "oklch(53.0% 0.166 32.3)",
+        "tonalRamp": [
+          "oklch(15% 0.150 32.3)",
+          "oklch(25% 0.150 32.3)",
+          "oklch(35% 0.150 32.3)",
+          "oklch(45% 0.150 32.3)",
+          "oklch(55% 0.150 32.3)",
+          "oklch(65% 0.150 32.3)",
+          "oklch(80% 0.150 32.3)",
+          "oklch(95% 0.150 32.3)"
+        ]
+      },
+      "stamp-deep": {
+        "role": "primary",
+        "displayName": "Merah Stempel Tua",
+        "canonical": "oklch(46.5% 0.146 32.4)",
+        "tonalRamp": [
+          "oklch(15% 0.146 32.4)",
+          "oklch(25% 0.146 32.4)",
+          "oklch(35% 0.146 32.4)",
+          "oklch(45% 0.146 32.4)",
+          "oklch(55% 0.146 32.4)",
+          "oklch(65% 0.146 32.4)",
+          "oklch(80% 0.146 32.4)",
+          "oklch(95% 0.146 32.4)"
+        ]
+      },
+      "wood": {
+        "role": "neutral",
+        "displayName": "Kayu",
+        "canonical": "oklch(49.7% 0.063 65.5)",
+        "tonalRamp": [
+          "oklch(15% 0.063 65.5)",
+          "oklch(25% 0.063 65.5)",
+          "oklch(35% 0.063 65.5)",
+          "oklch(45% 0.063 65.5)",
+          "oklch(55% 0.063 65.5)",
+          "oklch(65% 0.063 65.5)",
+          "oklch(80% 0.063 65.5)",
+          "oklch(95% 0.063 65.5)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display papan",
+        "purpose": "Hanya nama festival di papan utama."
+      },
+      "headline": {
+        "displayName": "Judul bagian",
+        "purpose": "Judul bagian di atas beludru."
+      },
+      "title": {
+        "displayName": "Baris papan",
+        "purpose": "Kota, tanggal, venue, nama band."
+      },
+      "board-small": {
+        "displayName": "Papan kecil",
+        "purpose": "Logotipe navigasi."
+      },
+      "board-tiny": {
+        "displayName": "Papan mini",
+        "purpose": "Tab hari, huruf panggung."
+      },
+      "paper-title": {
+        "displayName": "Judul kertas",
+        "purpose": "Nama kategori dan judul di dalam kertas, huruf biasa."
+      },
+      "price": {
+        "displayName": "Harga",
+        "purpose": "Angka harga utama di karcis."
+      },
+      "body": {
+        "displayName": "Teks baca",
+        "purpose": "Semua teks baca; 46 sampai 62ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Label formulir."
+      },
+      "stamp": {
+        "displayName": "Stempel",
+        "purpose": "Teks stempel status."
+      }
+    },
+    "shadows": [
+      {
+        "name": "paper-pinned",
+        "value": "0 1px 1px rgba(0,0,0,0.18), 0 10px 22px -10px rgba(0,0,0,0.55)",
+        "purpose": "Semua kertas dan karcis."
+      },
+      {
+        "name": "frame-inset",
+        "value": "inset 0 0 0 1px rgba(0,0,0,0.35), inset 0 10px 24px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.06)",
+        "purpose": "Bingkai kayu papan utama."
+      },
+      {
+        "name": "board-letter",
+        "value": "0 1px 0 rgba(0,0,0,0.35), 0 2px 3px rgba(0,0,0,0.25)",
+        "purpose": "text-shadow setiap huruf papan; dihapus pada tab hari aktif."
+      },
+      {
+        "name": "ticket-notch",
+        "value": "inset 2px 0 3px rgba(0,0,0,0.25)",
+        "purpose": "Takik setengah lingkaran garis sobekan (dicerminkan di sisi kiri)."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Semua transisi keadaan."
+      },
+      {
+        "name": "state",
+        "value": "160ms",
+        "purpose": "Warna dan garis tombol/field."
+      },
+      {
+        "name": "press",
+        "value": "120ms",
+        "purpose": "Tombol turun 1px saat ditekan."
+      },
+      {
+        "name": "peg",
+        "value": "520ms + 14ms per huruf",
+        "purpose": "Pasang huruf papan sekali saat dimuat; mati bila prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Tombol Merah Stempel",
+      "kind": "button",
+      "refersTo": "button-stamp",
+      "description": "Aksi utama satu-satunya di kertas: beli, pesan, bayar.",
+      "html": "<div class=\"ds-wrap\"><button class=\"ds-btn ds-btn-stamp\">Pilih tiket</button></div>",
+      "css": ":host{--felt:#1f3a2e;--felt-deep:#172e23;--groove:#142a1f;--chalk:#f2efe6;--chalk-dim:#b8c6b9;--paper:#f5f2ea;--paper-warm:#ece7da;--paper-edge:#d9d2bf;--ink:#1b1b18;--ink-soft:#4b4a43;--stamp:#b83a24;--wood:#7b5b3b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 1.15rem;font-family:'Public Sans',system-ui,sans-serif;font-weight:600;font-size:0.9375rem;border-radius:3px;border:0;cursor:pointer;transition:background-color 160ms var(--ease-out),transform 120ms var(--ease-out),border-color 160ms var(--ease-out);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:2px solid var(--stamp);outline-offset:3px;} .ds-wrap{background:var(--paper);padding:24px;} .ds-btn-stamp{background:var(--stamp);color:#fff;} .ds-btn-stamp:hover{background:#9a2f1c;}"
+    },
+    {
+      "name": "Tombol Tinta",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Aksi utama kedua atau aksi admin positif (Setujui).",
+      "html": "<div class=\"ds-wrap\"><button class=\"ds-btn ds-btn-ink\">Setujui</button></div>",
+      "css": ":host{--felt:#1f3a2e;--felt-deep:#172e23;--groove:#142a1f;--chalk:#f2efe6;--chalk-dim:#b8c6b9;--paper:#f5f2ea;--paper-warm:#ece7da;--paper-edge:#d9d2bf;--ink:#1b1b18;--ink-soft:#4b4a43;--stamp:#b83a24;--wood:#7b5b3b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 1.15rem;font-family:'Public Sans',system-ui,sans-serif;font-weight:600;font-size:0.9375rem;border-radius:3px;border:0;cursor:pointer;transition:background-color 160ms var(--ease-out),transform 120ms var(--ease-out),border-color 160ms var(--ease-out);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:2px solid var(--stamp);outline-offset:3px;} .ds-wrap{background:var(--paper);padding:24px;} .ds-btn-ink{background:var(--ink);color:var(--paper);} .ds-btn-ink:hover{background:#34332d;}"
+    },
+    {
+      "name": "Tombol Garis",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "Aksi pendamping di kertas (Tolak, kurang/tambah).",
+      "html": "<div class=\"ds-wrap\"><button class=\"ds-btn ds-btn-line\">Tolak</button></div>",
+      "css": ":host{--felt:#1f3a2e;--felt-deep:#172e23;--groove:#142a1f;--chalk:#f2efe6;--chalk-dim:#b8c6b9;--paper:#f5f2ea;--paper-warm:#ece7da;--paper-edge:#d9d2bf;--ink:#1b1b18;--ink-soft:#4b4a43;--stamp:#b83a24;--wood:#7b5b3b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 1.15rem;font-family:'Public Sans',system-ui,sans-serif;font-weight:600;font-size:0.9375rem;border-radius:3px;border:0;cursor:pointer;transition:background-color 160ms var(--ease-out),transform 120ms var(--ease-out),border-color 160ms var(--ease-out);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:2px solid var(--stamp);outline-offset:3px;} .ds-wrap{background:var(--paper);padding:24px;} .ds-btn-line{background:transparent;color:var(--ink);border:1px solid #b9b19c;} .ds-btn-line:hover{border-color:var(--ink);background:rgba(27,27,24,0.04);}"
+    },
+    {
+      "name": "Tombol Kapur",
+      "kind": "button",
+      "refersTo": "button-chalk",
+      "description": "Tombol di atas beludru (Masuk, filter admin).",
+      "html": "<div class=\"ds-felt\"><button class=\"ds-btn ds-btn-chalk\">Masuk</button></div>",
+      "css": ":host{--felt:#1f3a2e;--felt-deep:#172e23;--groove:#142a1f;--chalk:#f2efe6;--chalk-dim:#b8c6b9;--paper:#f5f2ea;--paper-warm:#ece7da;--paper-edge:#d9d2bf;--ink:#1b1b18;--ink-soft:#4b4a43;--stamp:#b83a24;--wood:#7b5b3b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 1.15rem;font-family:'Public Sans',system-ui,sans-serif;font-weight:600;font-size:0.9375rem;border-radius:3px;border:0;cursor:pointer;transition:background-color 160ms var(--ease-out),transform 120ms var(--ease-out),border-color 160ms var(--ease-out);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:2px solid var(--stamp);outline-offset:3px;} .ds-felt{background:var(--felt);padding:24px;} .ds-btn-chalk{min-height:36px;padding:0 0.8rem;font-size:0.875rem;background:transparent;color:var(--chalk);border:1px solid rgba(242,239,230,0.45);} .ds-btn-chalk:hover{border-color:var(--chalk);background:rgba(242,239,230,0.06);} .ds-btn-chalk:focus-visible{outline-color:var(--chalk);}"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Field formulir di atas kertas dengan label di atas.",
+      "html": "<div class=\"ds-wrap\"><label class=\"ds-label\" for=\"ds-f\">Nama lengkap</label><input id=\"ds-f\" class=\"ds-field\" placeholder=\"Sesuai KTP\"></div>",
+      "css": ":host{--felt:#1f3a2e;--felt-deep:#172e23;--groove:#142a1f;--chalk:#f2efe6;--chalk-dim:#b8c6b9;--paper:#f5f2ea;--paper-warm:#ece7da;--paper-edge:#d9d2bf;--ink:#1b1b18;--ink-soft:#4b4a43;--stamp:#b83a24;--wood:#7b5b3b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-wrap{background:var(--paper);padding:24px;font-family:'Public Sans',system-ui,sans-serif;color:var(--ink);} .ds-label{display:block;font-size:0.875rem;font-weight:500;margin-bottom:0.35rem;} .ds-field{display:block;width:100%;min-height:44px;padding:0.55rem 0.75rem;background:#fffdf8;border:1px solid #c9c1ab;border-radius:3px;font:inherit;color:inherit;transition:border-color 160ms var(--ease-out),box-shadow 160ms var(--ease-out);} .ds-field:hover{border-color:#a69d85;} .ds-field:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(184,58,36,0.18);} .ds-field[aria-invalid=true]{border-color:var(--stamp);}"
+    },
+    {
+      "name": "Navigasi",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Teks kecil di bingkai atas papan; logotipe huruf papan.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-logo\" href=\"#\">Gelar Tikar</a><nav class=\"ds-links\"><a href=\"#\" class=\"ds-on\" aria-current=\"page\">Acara</a><a href=\"#\">Tiket saya</a></nav></header>",
+      "css": ":host{--felt:#1f3a2e;--felt-deep:#172e23;--groove:#142a1f;--chalk:#f2efe6;--chalk-dim:#b8c6b9;--paper:#f5f2ea;--paper-warm:#ece7da;--paper-edge:#d9d2bf;--ink:#1b1b18;--ink-soft:#4b4a43;--stamp:#b83a24;--wood:#7b5b3b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-nav{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px;background:var(--felt);font-family:'Public Sans',system-ui,sans-serif;} .ds-logo{font-family:Archivo,'Arial Narrow',sans-serif;font-stretch:92%;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;font-size:1rem;line-height:24px;color:var(--chalk);text-decoration:none;text-shadow:0 1px 0 rgba(0,0,0,0.35),0 2px 3px rgba(0,0,0,0.25);} .ds-links{display:flex;gap:28px;font-size:0.9375rem;} .ds-links a{color:var(--chalk-dim);text-decoration:none;} .ds-links a:hover{color:var(--chalk);} .ds-links a.ds-on{color:var(--chalk);text-decoration:underline;text-decoration-color:rgba(242,239,230,0.6);text-underline-offset:0.2em;} .ds-links a:focus-visible,.ds-logo:focus-visible{outline:2px solid var(--chalk);outline-offset:3px;}"
+    },
+    {
+      "name": "Tab Hari",
+      "kind": "chip",
+      "refersTo": "day-tab",
+      "description": "Pilih hari jadwal di papan; aktif berlatar kapur.",
+      "html": "<div class=\"ds-felt\"><button class=\"ds-tab ds-tab-on\">Jum, 19</button><button class=\"ds-tab\">Sab, 20</button><button class=\"ds-tab\">Min, 21</button></div>",
+      "css": ":host{--felt:#1f3a2e;--felt-deep:#172e23;--groove:#142a1f;--chalk:#f2efe6;--chalk-dim:#b8c6b9;--paper:#f5f2ea;--paper-warm:#ece7da;--paper-edge:#d9d2bf;--ink:#1b1b18;--ink-soft:#4b4a43;--stamp:#b83a24;--wood:#7b5b3b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-felt{background:var(--felt);padding:24px;display:flex;gap:8px;} .ds-tab{font-family:Archivo,'Arial Narrow',sans-serif;font-stretch:92%;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;font-size:0.8125rem;line-height:24px;padding:0 12px;border:1px solid #2c4a3c;background:transparent;color:var(--chalk-dim);cursor:pointer;text-shadow:0 1px 0 rgba(0,0,0,0.35),0 2px 3px rgba(0,0,0,0.25);transition:color 160ms,border-color 160ms;} .ds-tab:hover{border-color:var(--chalk-dim);color:var(--chalk);} .ds-tab-on{background:var(--chalk);border-color:var(--chalk);color:var(--felt);text-shadow:none;} .ds-tab:focus-visible{outline:2px solid var(--chalk);outline-offset:3px;}"
+    },
+    {
+      "name": "Karcis Dipaku",
+      "kind": "card",
+      "refersTo": "paper-sheet",
+      "description": "Kertas pengumuman krem dipaku, dengan garis sobekan karcis.",
+      "html": "<div class=\"ds-felt\"><div class=\"ds-paper\"><span class=\"ds-pin\"></span><p class=\"ds-k\">Tiket mulai</p><p class=\"ds-price\">Rp175.000</p><div class=\"ds-tear\"><div class=\"ds-perf\"></div><span class=\"ds-n ds-l\"></span><span class=\"ds-n ds-r\"></span></div><p class=\"ds-k\">Sisa 1.853 dari 9.000</p></div></div>",
+      "css": ":host{--felt:#1f3a2e;--felt-deep:#172e23;--groove:#142a1f;--chalk:#f2efe6;--chalk-dim:#b8c6b9;--paper:#f5f2ea;--paper-warm:#ece7da;--paper-edge:#d9d2bf;--ink:#1b1b18;--ink-soft:#4b4a43;--stamp:#b83a24;--wood:#7b5b3b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-felt{background:var(--felt);padding:32px;} .ds-paper{position:relative;max-width:24rem;background:var(--paper);color:var(--ink);padding:28px 24px 24px;transform:rotate(1.2deg);box-shadow:0 1px 1px rgba(0,0,0,0.18),0 10px 22px -10px rgba(0,0,0,0.55);font-family:'Public Sans',system-ui,sans-serif;} .ds-pin{position:absolute;top:-7px;left:calc(78% - 7px);width:14px;height:14px;background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Ccircle cx='8.5' cy='8.5' r='5.5' fill='%23000' fill-opacity='.28'/%3E%3Ccircle cx='6.5' cy='6.5' r='5.5' fill='%23b83a24'/%3E%3Ccircle cx='6.5' cy='6.5' r='3.2' fill='none' stroke='%239a2f1c' stroke-width='1'/%3E%3C/svg%3E\") no-repeat;} .ds-k{margin:0;font-size:0.8125rem;color:var(--ink-soft);font-variant-numeric:tabular-nums;} .ds-price{margin:4px 0 0;font-family:Archivo,'Arial Narrow',sans-serif;font-size:2.25rem;font-weight:500;line-height:1;letter-spacing:0.01em;font-variant-numeric:tabular-nums;} .ds-tear{position:relative;margin:20px -24px;} .ds-perf{margin:0 20px;height:3px;background-image:radial-gradient(circle,#b5ab92 1.2px,transparent 1.4px);background-size:9px 3px;background-repeat:repeat-x;} .ds-n{position:absolute;top:50%;width:18px;height:18px;border-radius:50%;background:var(--felt);transform:translateY(-50%);} .ds-l{left:-9px;box-shadow:inset -2px 0 3px rgba(0,0,0,0.25);} .ds-r{right:-9px;box-shadow:inset 2px 0 3px rgba(0,0,0,0.25);}"
+    },
+    {
+      "name": "Stempel Status",
+      "kind": "custom",
+      "refersTo": "status-stamp",
+      "description": "Status pesanan: menunggu (putus-putus), lunas (merah miring), ditolak (dicoret).",
+      "html": "<div class=\"ds-wrap\"><span class=\"ds-stamp ds-pending\">Menunggu verifikasi</span><span class=\"ds-stamp ds-paid\">Lunas</span><span class=\"ds-stamp ds-rejected\">Ditolak</span></div>",
+      "css": ":host{--felt:#1f3a2e;--felt-deep:#172e23;--groove:#142a1f;--chalk:#f2efe6;--chalk-dim:#b8c6b9;--paper:#f5f2ea;--paper-warm:#ece7da;--paper-edge:#d9d2bf;--ink:#1b1b18;--ink-soft:#4b4a43;--stamp:#b83a24;--wood:#7b5b3b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-wrap{background:var(--paper);padding:24px;display:flex;gap:16px;align-items:center;} .ds-stamp{display:inline-flex;align-items:center;padding:0.1rem 0.5rem;border:1.5px solid currentColor;border-radius:3px;font-family:Archivo,sans-serif;font-weight:500;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;line-height:1.6;white-space:nowrap;} .ds-pending{color:var(--ink-soft);border-style:dashed;} .ds-paid{color:var(--stamp);border-width:2px;transform:rotate(-2deg);} .ds-rejected{color:var(--stamp);text-decoration:line-through;text-decoration-thickness:1.5px;}"
+    },
+    {
+      "name": "Meter Kuota",
+      "kind": "custom",
+      "refersTo": "quota-meter",
+      "description": "Rel kuota pada skala bersama; isi tinta = terjual.",
+      "html": "<div class=\"ds-wrap\"><div class=\"ds-rail\" style=\"width:100%\"><div class=\"ds-fill\" style=\"width:66%\"></div></div><p class=\"ds-cap\">Sisa <span>860</span> dari 2.500</p><div class=\"ds-rail\" style=\"width:60%;margin-top:16px\"><div class=\"ds-fill\" style=\"width:87%\"></div></div><p class=\"ds-cap\">Sisa <span>190</span> dari 1.500</p></div>",
+      "css": ":host{--felt:#1f3a2e;--felt-deep:#172e23;--groove:#142a1f;--chalk:#f2efe6;--chalk-dim:#b8c6b9;--paper:#f5f2ea;--paper-warm:#ece7da;--paper-edge:#d9d2bf;--ink:#1b1b18;--ink-soft:#4b4a43;--stamp:#b83a24;--wood:#7b5b3b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-wrap{background:var(--paper);padding:24px;font-family:'Public Sans',system-ui,sans-serif;} .ds-rail{height:6px;background:var(--paper-warm);} .ds-fill{height:100%;background:rgba(27,27,24,0.8);} .ds-cap{margin:6px 0 0;font-size:0.8125rem;color:var(--ink-soft);font-variant-numeric:tabular-nums;} .ds-cap span{color:var(--ink);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Papan Pengumuman di Pintu Venue",
+    "overview": "Seluruh web adalah satu papan beludru hijau botol dengan alur horizontal halus, tempat panitia menancapkan huruf plastik putih dan memaku kertas pengumuman krem. Apa pun yang *diumumkan* (nama festival, tanggal, venue, lineup, judul bagian) ditulis dengan huruf papan: Archivo kapital, berjarak lebar, berbobot sedang, dengan bayangan jatuh tipis seperti huruf yang benar-benar menempel. Apa pun yang *dibaca atau diisi* (harga, kuota, formulir, rincian pesanan, daftar pesanan admin) berada di atas kertas krem yang dipaku paku payung merah.\n\nHalaman pembeli dan panel panitia memakai dunia yang sama: admin bekerja di papan kerja yang sama, pesanan adalah kertas, statusnya stempel. Kepadatan sedang dan tenang; ruang antarbagian lebar (96px), isi kertas rapat dan bergaris 1px. Hanya ada satu warna seru, merah stempel, dan ia dipakai untuk aksi utama dan status, tidak untuk hiasan.\n\nYang ditolak secara sadar (dari kontrak arah dan PRODUCT.md): hero gelap dengan neon, gradient warna, glow, deret kartu sama besar, emoji di UI, dan huruf tebal berlebihan.",
+    "keyCharacteristics": [
+      "Papan beludru hijau dengan alur tiap 24px (dua kali `--g`) sebagai latar seluruh situs.",
+      "Huruf papan Archivo kapital berbobot 500, dipasang per huruf saat pertama muncul.",
+      "Kertas krem bersudut tajam, dipaku, kadang miring sedikit (0,5 sampai 1,2 derajat).",
+      "Tiga nilai warna (beludru, kertas, tinta) ditambah satu merah stempel.",
+      "Garis 1px dan garis putus sobekan karcis sebagai pemisah."
+    ],
+    "rules": [
+      {
+        "name": "The Satu Merah Rule",
+        "body": "Merah stempel hanya untuk aksi utama, status, galat, dan paku. Satu tombol merah per kertas; aksi pendamping memakai tombol tinta atau tombol garis.",
+        "section": "colors"
+      },
+      {
+        "name": "The Beludru-atau-Kertas Rule",
+        "body": "Setiap elemen hidup di salah satu dari dua permukaan. Di beludru: kapur dan kapur redup. Di kertas: tinta dan tinta lunak. Jangan menaruh teks tinta langsung di beludru atau teks kapur di kertas.",
+        "section": "colors"
+      },
+      {
+        "name": "The Alur Rule",
+        "body": "Tinggi baris huruf papan adalah kelipatan alur 12px (24, 36, 48px) supaya huruf berdiri di garis papan. Hanya Display yang lepas dari aturan ini.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tanpa Tebal Rule",
+        "body": "Bobot tertinggi di sistem adalah 600, dan hanya untuk teks tombol. Penekanan lain memakai warna (tinta lawan tinta lunak) atau Archivo, bukan bobot.",
+        "section": "typography"
+      },
+      {
+        "name": "The Angka Tabular Rule",
+        "body": "Harga, kuota, kode pesanan, dan nomor Virtual Account selalu memakai angka tabular.",
+        "section": "typography"
+      },
+      {
+        "name": "The Satu Ketinggian Rule",
+        "body": "Kertas tidak naik saat hover dan tidak bertumpuk. Bayangan hanya menyatakan \"ditempel\", bukan prioritas.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do tulis semua yang diumumkan di beludru (nama acara, tanggal, venue, lineup, judul bagian) dengan huruf papan kapital, tinggi baris kelipatan 12px.",
+      "Do letakkan semua yang dibaca atau diisi di atas kertas krem bersudut tajam dengan bayangan kertas menempel.",
+      "Do batasi merah stempel (#b83a24) pada aksi utama, status, galat, dan paku; satu tombol merah per kertas.",
+      "Do tampilkan daftar sebagai baris bergaris 1px di dalam satu kertas.",
+      "Do gambar kuota semua kategori pada skala yang sama.",
+      "Do pakai angka tabular untuk harga, kuota, kode, dan nomor pembayaran.",
+      "Do hormati `prefers-reduced-motion` untuk animasi pasang huruf dan gulir halus."
+    ],
+    "donts": [
+      "Don't pakai gradient warna, glow, atau neon. Pola tekstur papan (alur, serat beludru, titik sobekan) bukan gradient warna dan tetap boleh.",
+      "Don't pakai bobot di atas 600, dan 600 hanya untuk teks tombol.",
+      "Don't tambah warna aksen kedua; status memakai tinta dan merah stempel saja.",
+      "Don't pakai emoji di UI.",
+      "Don't pecah daftar menjadi deret kartu sama besar.",
+      "Don't pakai sudut membulat besar pada kertas, tombol, atau field; 3px maksimum, bulat penuh hanya untuk benda bulat (paku, takik, titik status).",
+      "Don't tampilkan penanda \"berikutnya tampil\" atau status langsung acara selama acara belum berlangsung; itu status palsu.",
+      "Don't miringkan kertas lebih dari 1,2 derajat atau miringkan kertas yang berisi formulir panjang atau tabel admin."
+    ]
+  }
+}

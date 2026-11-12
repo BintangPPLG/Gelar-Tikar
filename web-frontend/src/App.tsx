@@ -1,162 +1,71 @@
-import React, { useState } from 'react';
-import { AnimatePresence } from 'motion/react';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import { Navbar } from './components/Navbar';
-import { HeroSection } from './components/HeroSection';
-import { LiveStatusBar } from './components/LiveStatusBar';
-import { LineupBento } from './components/LineupBento';
-import { StageMapExplorer } from './components/StageMapExplorer';
-import { TicketPassSelector } from './components/TicketPassSelector';
-import { ExperienceHighlights } from './components/ExperienceHighlights';
-import { FestivalFaq } from './components/FestivalFaq';
-import { Footer } from './components/Footer';
-import { WelcomeIntro } from './components/WelcomeIntro';
-import { HomePage } from './components/home/HomePage';
-import { AuthModal } from './components/auth/AuthModal';
-import { AdminControlCenter } from './components/admin/AdminControlCenter';
-import { MyTicketsModal } from './components/user/MyTicketsModal';
-import { CheckoutModal } from './components/CheckoutModal';
-import { stopArtistAudioPreview } from './audio/synthAudio';
-import { TicketTier, Event as EventType } from './api/client';
+import React from 'react';
+import { AuthProvider } from './context/AuthContext';
+import { useRoute } from './lib/router';
+import { SiteFooter, SiteNav } from './components/SiteNav';
+import { EventPage } from './pages/EventPage';
+import { CheckoutPage } from './pages/CheckoutPage';
+import { OrderPage } from './pages/OrderPage';
+import { MyTicketsPage } from './pages/MyTicketsPage';
+import { AuthPage } from './pages/AuthPage';
+import { AdminPage } from './pages/AdminPage';
 
-function MainAppContent() {
-  const { isLoggedIn } = useAuth();
+/*
+  Peta halaman (hash router):
+  #/                     acara utama
+  #/acara/:slug          acara di kota lain
+  #/masuk, #/daftar      masuk / daftar (?next= halaman tujuan setelah masuk)
+  #/pesan/:tierId?qty=   formulir pemesanan (wajib masuk)
+  #/pesanan/:kode        status pembayaran dan e-tiket
+  #/tiket-saya           semua pesanan milik akun
+  #/admin/:tab           panel panitia (khusus admin)
+*/
+function Routes() {
+  const { path, query } = useRoute();
+  const [first, second] = path;
 
-  const [showIntro, setShowIntro] = useState<boolean>(false);
-  const [isAudioMuted, setIsAudioMuted] = useState<boolean>(false);
-
-  // Modals
-  const [isAuthOpen, setIsAuthOpen] = useState<boolean>(false);
-  const [authTab, setAuthTab] = useState<'login' | 'register'>('login');
-  const [authRedirectMessage, setAuthRedirectMessage] = useState<string | null>(null);
-
-  const [isAdminOpen, setIsAdminOpen] = useState<boolean>(false);
-  const [isMyTicketsOpen, setIsMyTicketsOpen] = useState<boolean>(false);
-
-  const [checkoutTier, setCheckoutTier] = useState<TicketTier | null>(null);
-  const [checkoutQty, setCheckoutQty] = useState<number>(1);
-  const [isCheckoutOpen, setIsCheckoutOpen] = useState<boolean>(false);
-
-  const handleOpenAuth = (tab: 'login' | 'register' = 'login', msg: string | null = null) => {
-    setAuthTab(tab);
-    setAuthRedirectMessage(msg);
-    setIsAuthOpen(true);
-  };
-
-  const handleOpenCheckout = (tier: any, event?: EventType, qty: number = 1) => {
-    const formattedTier: TicketTier = {
-      id: typeof tier.id === 'number' ? tier.id : 1,
-      event_id: event?.id || tier.event_id || 1,
-      name: tier.name,
-      price: tier.price,
-      total_quota: tier.total_quota || 1000,
-      sold_count: tier.sold_count || 300,
-      description: tier.description,
-      status: 'active',
-    };
-
-    setCheckoutTier(formattedTier);
-    setCheckoutQty(qty);
-
-    if (!isLoggedIn) {
-      handleOpenAuth('login', 'Silakan masuk atau daftar akun terlebih dahulu untuk melanjutkan pemesanan tiket konser.');
-    } else {
-      setIsCheckoutOpen(true);
-    }
-  };
-
-  const handleToggleAudio = () => {
-    if (!isAudioMuted) {
-      stopArtistAudioPreview();
-    }
-    setIsAudioMuted(!isAudioMuted);
-  };
+  let page: React.ReactNode;
+  let nav = 'home';
+  switch (first) {
+    case 'acara':
+      page = <EventPage slug={second} key={second} />;
+      break;
+    case 'masuk':
+    case 'daftar':
+      page = <AuthPage mode={first} next={query.get('next') || undefined} />;
+      nav = 'auth';
+      break;
+    case 'pesan':
+      page = <CheckoutPage tierId={Number(second)} initialQty={Number(query.get('qty')) || 1} key={second} />;
+      break;
+    case 'pesanan':
+      page = <OrderPage code={second || ''} isNew={query.get('baru') === '1'} key={second} />;
+      nav = 'tickets';
+      break;
+    case 'tiket-saya':
+      page = <MyTicketsPage />;
+      nav = 'tickets';
+      break;
+    case 'admin':
+      page = <AdminPage tab={second} />;
+      nav = 'admin';
+      break;
+    default:
+      page = <EventPage key="home" />;
+  }
 
   return (
-    <div className="min-h-screen bg-[#08090c] text-zinc-100 relative selection:bg-[#d4ff00] selection:text-black font-sans">
-      {/* Welcome Intro Screen */}
-      <AnimatePresence>
-        {showIntro && (
-          <WelcomeIntro onEnter={() => setShowIntro(false)} />
-        )}
-      </AnimatePresence>
-
-      {/* Main Unified Responsive Navbar */}
-      <Navbar
-        onOpenTickets={() => {
-          const el = document.getElementById('tickets');
-          el?.scrollIntoView({ behavior: 'smooth' });
-        }}
-        onOpenAuth={(tab) => handleOpenAuth(tab || 'login')}
-        onOpenMyTickets={() => setIsMyTicketsOpen(true)}
-        onOpenAdmin={() => setIsAdminOpen(true)}
-        onReplayIntro={() => setShowIntro(true)}
-        isAudioMuted={isAudioMuted}
-        onToggleAudio={handleToggleAudio}
-      />
-
-      {/* Dynamic Content View: Home (When Logged In) vs Landing (When Not Logged In) */}
-      <main className="transition-all duration-300">
-        {isLoggedIn ? (
-          <HomePage
-            onCheckout={(tier, event, qty) => handleOpenCheckout(tier, event, qty)}
-            onOpenMyTickets={() => setIsMyTicketsOpen(true)}
-          />
-        ) : (
-          <div className="space-y-0">
-            <HeroSection
-              onOpenTickets={() => {
-                const el = document.getElementById('tickets');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            />
-
-            <LiveStatusBar />
-
-            <LineupBento />
-
-            <StageMapExplorer />
-
-            <TicketPassSelector
-              onCheckout={(tier, qty) => handleOpenCheckout(tier, undefined, qty)}
-            />
-
-            <ExperienceHighlights />
-
-            <FestivalFaq />
-          </div>
-        )}
+    <div className="flex min-h-screen flex-col">
+      <a href="#utama" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-paper focus:px-3 focus:py-2" onClick={(e) => {
+        e.preventDefault();
+        document.getElementById('utama')?.focus();
+      }}>
+        Langsung ke isi
+      </a>
+      <SiteNav current={nav} />
+      <main id="utama" tabIndex={-1} className="flex-1 outline-none">
+        {page}
       </main>
-
-      <Footer />
-
-      {/* 1. Unified Auth Modal */}
-      <AuthModal
-        isOpen={isAuthOpen}
-        onClose={() => setIsAuthOpen(false)}
-        initialTab={authTab}
-        redirectMessage={authRedirectMessage}
-      />
-
-      {/* 2. Unified Admin Control Center (Embedded Dashboard) */}
-      <AdminControlCenter
-        isOpen={isAdminOpen}
-        onClose={() => setIsAdminOpen(false)}
-      />
-
-      {/* 3. My Tickets & QR E-Ticket Modal */}
-      <MyTicketsModal
-        isOpen={isMyTicketsOpen}
-        onClose={() => setIsMyTicketsOpen(false)}
-      />
-
-      {/* 4. Checkout Modal (Stores order directly into DB) */}
-      <CheckoutModal
-        isOpen={isCheckoutOpen}
-        onClose={() => setIsCheckoutOpen(false)}
-        tier={checkoutTier}
-        quantity={checkoutQty}
-      />
+      <SiteFooter />
     </div>
   );
 }
@@ -164,7 +73,7 @@ function MainAppContent() {
 export default function App() {
   return (
     <AuthProvider>
-      <MainAppContent />
+      <Routes />
     </AuthProvider>
   );
 }

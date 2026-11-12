@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { dbRepository } from '../services/store.js';
+import { dbRepository, OrderError } from '../services/store.js';
 
 export const ticketController = {
   // GET /api/tickets?event_id=1
@@ -58,6 +58,10 @@ export const ticketController = {
       await dbRepository.deleteTier(id);
       res.json({ success: true, message: 'Kategori tiket berhasil dihapus.' });
     } catch (error: any) {
+      if (error instanceof OrderError) {
+        res.status(400).json({ success: false, message: error.message });
+        return;
+      }
       res.status(500).json({ success: false, message: 'Gagal menghapus tiket.' });
     }
   },

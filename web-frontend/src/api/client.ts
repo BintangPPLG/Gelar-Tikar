@@ -30,6 +30,17 @@ export interface TicketTier {
   status: 'active' | 'closed' | 'sold_out';
 }
 
+export interface LineupSlot {
+  id: number;
+  event_id: number;
+  artist_id: number;
+  artist_name?: string;
+  genre?: string;
+  stage_name: string;
+  performance_time: string;
+  day_number: number;
+}
+
 export interface Event {
   id: number;
   title: string;
@@ -42,7 +53,7 @@ export interface Event {
   end_date?: string;
   status: 'draft' | 'open' | 'closed' | 'sold_out';
   ticket_tiers?: TicketTier[];
-  artists?: Artist[];
+  lineup?: LineupSlot[];
 }
 
 export interface OrderItem {
@@ -50,6 +61,7 @@ export interface OrderItem {
   order_id: number;
   ticket_tier_id: number;
   tier_name?: string;
+  valid_for?: string;
   ticket_code: string;
   quantity: number;
   unit_price: number;
@@ -74,6 +86,8 @@ export interface Order {
   user_id?: number | null;
   event_id: number;
   event_title?: string;
+  venue_name?: string;
+  event_date?: string;
   total_amount: number;
   customer_name: string;
   customer_email: string;
@@ -90,6 +104,9 @@ export interface DashboardMetrics {
   totalOrders: number;
   paidOrdersCount: number;
   pendingOrdersCount: number;
+  rejectedOrdersCount: number;
+  ticketsPaidThroughWeb: number;
+  storage: 'mysql' | 'memory';
   totalTicketsSold: number;
   totalQuota: number;
   activeEventsCount: number;
@@ -97,9 +114,12 @@ export interface DashboardMetrics {
   ticketTiers: TicketTier[];
 }
 
+export const TOKEN_KEY = 'gelartikar_token';
+export const USER_KEY = 'gelartikar_user';
+
 // Request Helper
 async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
-  const token = localStorage.getItem('aurora_token');
+  const token = localStorage.getItem(TOKEN_KEY);
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
     ...(options.headers as Record<string, string>),
@@ -149,6 +169,11 @@ export const api = {
         method: 'POST',
         body: JSON.stringify(data),
       }),
+    update: (id: number, data: Partial<Event>) =>
+      request<{ success: boolean; message: string; data: Event }>(`/events/${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify(data),
+      }),
     toggleSales: (id: number, status: 'open' | 'closed' | 'sold_out') =>
       request<{ success: boolean; message: string; data: Event }>(`/events/${id}/toggle-sales`, {
         method: 'PATCH',
@@ -192,9 +217,8 @@ export const api = {
         method: 'POST',
         body: JSON.stringify(orderData),
       }),
-    getMyOrders: (email?: string) =>
-      request<{ success: boolean; data: Order[] }>(email ? `/orders?email=${encodeURIComponent(email)}` : '/orders'),
-    getByCode: (code: string) => request<{ success: boolean; data: Order }>(`/orders/${code}`),
+    getMyOrders: () => request<{ success: boolean; data: Order[] }>('/orders'),
+    getByCode: (code: string) => request<{ success: boolean; data: Order }>(`/orders/${encodeURIComponent(code)}`),
   },
 
   // Artists
