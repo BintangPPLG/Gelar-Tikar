@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    background-color: #08090c;
+    color: #f3f4f6;
+    overflow-x: hidden;
+    letter-spacing: -0.01em;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  .font-mono-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Emil Kowalski physical button responsiveness */
+.btn-tactile {
+  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out), opacity 160ms var(--ease-out), border-color 160ms var(--ease-out);
+}
+.btn-tactile:active {
+  transform: scale(0.97);
+}
+
+/* Refined festival surface & card materiality */
+.fest-card {
+  background: rgba(17, 19, 25, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.fest-card-hover {
+  transition: transform 220ms var(--ease-out), border-color 220ms var(--ease-out), box-shadow 220ms var(--ease-out);
+}
+.fest-card-hover:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+  box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.fest-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Authentic ticket perforation & notch */
+.ticket-stub {
+  position: relative;
+  background: #111319;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.ticket-divider-dashed {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.25) 50%, transparent 50%);
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+  height: 1px;
+}
+
+/* Audio equalizer bars */
+@keyframes audioPulse {
+  0%, 100% { height: 4px; }
+  50% { height: 20px; }
+}
+
+.audio-bar-1 { animation: audioPulse 0.85s var(--ease-in-out) infinite; }
+.audio-bar-2 { animation: audioPulse 0.65s var(--ease-in-out) infinite 0.15s; }
+.audio-bar-3 { animation: audioPulse 1.05s var(--ease-in-out) infinite 0.3s; }
+.audio-bar-4 { animation: audioPulse 0.75s var(--ease-in-out) infinite 0.45s; }
+.audio-bar-5 { animation: audioPulse 0.95s var(--ease-in-out) infinite 0.2s; }
+
+/* Clean scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #08090c;
+}
+::-webkit-scrollbar-thumb {
+  background: #1c202c;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4ff00;
+}
